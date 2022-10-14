@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note</title>
+    <link rel="stylesheet" href="style.css">  
+</head>
+<body>
+    <!--Adding Header to a webpage-->
+    <div class="header">
+        <header>
+            <h1>Welcome To Note Taking Form</h1>
+            <br>
+            <!--Adding separate links to a webpage-->
+            <div class="nav">
+                <nav>
+                    <a href="welcome.html" target="_blank"><strong>Welcome</strong></a>
+                    <a href="register.html" target="_blank"><strong>Registration</strong></a>
+                    <a href="login.html" target="_blank"><strong>Login</strong></a>
+                </nav>  
+            </div>  
+        </header>
+    </div>
+    <hr>
+    <!--Creating Note taking form to a webpage-->
+    <div class="note">
+        <form>
+            <h2>Please Enter your details and Subject to save your work.</h2>
+            <br>
+            <label for="date"><b>Date: </b></label>
+            <input type="date" placeholder="Enter Date" name="date" required>
+            <br>
+            <br>
+            <label for="noteid">Note Id:</label>
+            <input type="number" placeholder="Enter unique Note Id" name="noteid" min="1" step="1">
+            <br>
+            <br>
+            <label for="subject"><b>Subject: </b></label>
+            <textarea id="subject" name="subject" placeholder="Write something.." style="height:100px"></textarea>
+            <br>
+            <br>
+            <label for="submit"></label>
+            <input type="submit" value="Submit">
+            <br>
+        </form>
+    </div>
+    <!--Adding Footer to a webpage-->
+    <div class="footer" style="margin-top: 180px;">
+        <footer>
+            <hr>
+            <p>Tarun Reddy Kandula &copy;</p>
+        </footer>
+    </div>
+</body>
+</html>
+
+
