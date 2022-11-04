@@ -26,19 +26,19 @@
     <hr>
     <!--Creating Note taking form to a webpage-->
     <div class="note">
-        <form>
+        <form id="note">
             <h2>Please Enter your details and Subject to save your work.</h2>
             <br>
             <label for="date"><b>Date: </b></label>
-            <input type="date" placeholder="Enter Date" name="date" required>
+            <input type="date" placeholder="Enter Date" name="date" id="date">
             <br>
             <br>
             <label for="noteid">Note Id:</label>
-            <input type="number" placeholder="Enter unique Note Id" name="noteid" min="1" step="1">
+            <input type="number" placeholder="Enter unique Note Id" name="noteid" id="noteid" min="1" step="1">
             <br>
             <br>
             <label for="subject"><b>Subject: </b></label>
-            <textarea id="subject" name="subject" placeholder="Write something.." style="height:100px"></textarea>
+            <textarea id="subject" name="subject" placeholder="Write something.." id="subject" style="height:100px"></textarea>
             <br>
             <br>
             <label for="submit"></label>
@@ -53,6 +53,7 @@
             <p>Tarun Reddy Kandula &copy;</p>
         </footer>
     </div>
+    <script src="./main.js"></script>
 </body>
 </html>
 

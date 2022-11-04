@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -26,30 +27,30 @@
     <hr>
     <!--Creating Registration form-->
     <div class="form">
-        <form>
+        <form id="registration">
             <h2>Please fill in this form to create an account.</h2>
             <br>
             <label for="fname"><b>First Name: </b></label>
-            <input type="text" placeholder="Enter First Name" name="fname" required>
+            <input type="text" placeholder="Enter First Name" name="fname" id="fname" >
             <br>
             <label for="mname"><b>Middle Name: </b></label>
-            <input type="text" placeholder="Enter Middle Name" name="mname" required>
+            <input type="text" placeholder="Enter Middle Name" name="mname" id="mname" >
             <br>
             <label for="lname"><b>Last Name: </b></label>
-            <input type="text" placeholder="Enter Last Name" name="lname" required>
+            <input type="text" placeholder="Enter Last Name" name="lname" id="lname" >
             <br>
             <label for="date"><b>DoB: </b></label>
-            <input type="date" placeholder="Enter Date of Birth" name="dob" required>
+            <input type="date" placeholder="Enter Date of Birth" name="dob" id="dob" >
             <br>
             <br>
             <label for="email"><b>Email: </b></label>
-            <input type="text" placeholder="Enter Email" name="email" required>
+            <input type="text" placeholder="Enter Email" name="email" id="email" >
             <br>
             <label for="psw"><b>Password: </b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
+            <input type="password" placeholder="Enter Password" name="psw" id="psw" >
             <br>
             <label for="psw-repeat"><b>Repeat Password: </b></label>
-            <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+            <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" >
             <br>
             <p>By creating an account you agree to our <a href="termsandprivacy.html" style="color:dodgerblue" target="_blank">Terms & Privacy</a>.</p>
             <input type="submit" value="Sign up">
@@ -62,6 +63,7 @@
             <hr>
             <p>Tarun Reddy Kandula &copy;</p>
         </footer>
-    </div>   
+    </div>
+    <script src="./main.js"></script>   
 </body>
 </html>

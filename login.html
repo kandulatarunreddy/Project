@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -25,14 +26,14 @@
     <hr>
     <!--Creating Login form-->
     <div class="form">
-        <form>
+        <form id="login">
             <h2>Please fill in this form to LOGIN into your account.</h2>
             <br>
             <label for="email"><b>Email: </b></label>
-            <input type="text" placeholder="Enter Email" name="email" required>
+            <input type="text" placeholder="Enter Email" name="email" id="email" >
             <br><br>
             <label for="psw"><b>Password: </b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
+            <input type="password" placeholder="Enter Password" name="psw" id="psw" >
             <br><br>
             <input type="submit" value="Login">
             <br>
@@ -45,6 +46,6 @@
             <p>Tarun Reddy Kandula &copy;</p>
         </footer>
     </div>
-    
+    <script src="./main.js"></script>
 </body>
 </html>
