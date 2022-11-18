@@ -140,3 +140,9 @@ nav{
   width: 400px;
   justify-content: space-between;
 }
+#userDetails{
+  color:red;
+}
+#noteDetails{
+  color:red;
+}
