@@ -207,4 +207,22 @@ if(noteDetails) noteDetails.addEventListener('click',getNotes);
      .catch((err)=>console.log(`Error! ${err}`));
  }
 
+ class User{
+    constructor(userName, password, fullName) {
+        this.userName = userName;
+        this.password = password;
+        this.fullName = fullName;
+      }
+    
+      getUsername() {
+        return this.userName;
+      }
+  }
+
+  class Note{
+
+    constructor(text){
+        this.note=text;
+    }
+}
 
