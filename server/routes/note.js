@@ -6,6 +6,7 @@ const router=express.Router();
 router.post('/',async (req,res)=>{
     try{
         const notes = await Note.getNote(req.body);
+        console.log("testing")
         console.log(notes);
         res.send(notes);
     }catch(err){

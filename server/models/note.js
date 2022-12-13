@@ -51,7 +51,7 @@ async function getNote(note) {
 	if (note.noteID) {
 		sql = `SELECT * from notes where noteID=${note.noteID}`;
 	} else {
-		sql = `SELECT * from notes where note=${note.userID}`;
+		sql = `SELECT * from notes where userID=${note.userID}`;
 	}
 	return await con.query(sql);
 }
@@ -72,8 +72,8 @@ function getNotes(){
 
 module.exports = {
 	getAllNotes,
+	createNote,
 	editNote,
 	deleteNote,
-	createNote,
 	getNote
 };

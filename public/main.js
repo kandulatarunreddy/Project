@@ -209,8 +209,8 @@ function getUsers(){
 }
 
 //Note Details using a button click.
-const noteDetails=document.getElementById("notes-btn");
-if(noteDetails) noteDetails.addEventListener('click',getNotes);
+//const noteDetails=document.getElementById("notes-btn");
+//if(noteDetails) noteDetails.addEventListener('button',getNotes);
 
 let user=getCurrentUser();
 if(user && noteform) getNotes();
@@ -218,13 +218,16 @@ if(user && noteform) getNotes();
 
  function getNotes(){
     let user= getCurrentUser();
+    console.log("hey",user);
      fetchData("/notes/",user,"post")
      .then((data)=>{
          let unorderdlist=document.getElementById("allNotes");
 
          data.forEach((note)=>{
+            console.log("t2",note);
              let li=document.createElement('li');
              let text=document.createTextNode(note.note);
+             //let text=document.createTextNode("t1");
              li.appendChild(text);
              unorderdlist.appendChild(li);
 
