@@ -7,8 +7,7 @@ router.get('/',async(req,res)=>{
         const users=await User.getAllUsers();
         res.send(users);
     }catch(err){
-        res.status(401).send({message: error.message});
-
+        res.status(401).send({message: err.message});
     }
 })
 

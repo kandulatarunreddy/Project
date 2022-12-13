@@ -3,12 +3,13 @@ const Note=require('../models/note');
 const User=require('../models/user');
 const router=express.Router();
 
-router.get('/',async (req,res)=>{
+router.post('/',async (req,res)=>{
     try{
-        const notes = await Note.getAllNotes();
+        const notes = await Note.getNote(req.body);
+        console.log(notes);
         res.send(notes);
     }catch(err){
-        res.status(401).send({message: error.message});
+        res.status(401).send({message: err.message});
     }
 })
 

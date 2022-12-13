@@ -22,7 +22,7 @@ async function getAllUsers() {
 // Create  User - Registering
 async function register(user) {
 	let cUser = await getUser(user);
-	//if(cUser.length > 0) throw Error("username already in use");  
+	if(cUser.length > 0) throw Error("username already in use");  
 	const sql = `INSERT INTO users(userName,password)
       VALUES ("${user.userName}","${user.password}");
        `

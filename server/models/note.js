@@ -19,7 +19,8 @@ createTable();
 async function getAllNotes() {
 	const sql = `SELECT * FROM notes;`;
 	let notes = await con.query(sql);
-	console.log(notes)
+	console.log(notes);
+	return await notes;
 }
 
 // Creating a new note
@@ -50,7 +51,7 @@ async function getNote(note) {
 	if (note.noteID) {
 		sql = `SELECT * from notes where noteID=${note.noteID}`;
 	} else {
-		sql = `SELECT * from notes where note="${note.note}"`;
+		sql = `SELECT * from notes where note=${note.userID}`;
 	}
 	return await con.query(sql);
 }
@@ -73,5 +74,6 @@ module.exports = {
 	getAllNotes,
 	editNote,
 	deleteNote,
-	createNote
+	createNote,
+	getNote
 };

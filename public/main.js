@@ -1,4 +1,7 @@
-// Register Page Details
+import {
+    fetchData, setCurrentUser, setCurrentNote,getCurrentUser, getCurrentNote
+} from "./fetch.js";
+
 const register=document.getElementById("registration");
 if(register) register.addEventListener('submit',registerUser)
 
@@ -7,157 +10,179 @@ function registerUser(e){
     e.preventDefault();
 
     let firstName=document.getElementById('fname').value;
-    let middleName=document.getElementById('mname').value;
     let lastName=document.getElementById('lname').value;
-    let dateOfBirth=document.getElementById('dob').value;
-    let email=document.getElementById('email').value;
+    let userName=document.getElementById('uname').value;
     let password=document.getElementById('psw').value;
     let repeatPassword=document.getElementById('psw-repeat').value;
 
-    class User{
-        constructor(firstName,middleName,lastName,dateOfBirth,email,password,repeatPassword)
-        {
-            this.firstName=firstName;
-            this.middleName=middleName;
-            this.lastName=lastName;
-            this.dateOfBirth=dateOfBirth;
-            this.email=email;
-            this.password=password;
-            this.repeatPassword=repeatPassword;
-        }
-       
-        getFirstName() {
-            return this.firstName;
-          }
-        getMiddleName() {
-            return this.middleName;
-        }
-        getLastName() {
-            return this.lastName;
-        }
-        getDateOfBirth() {
-            return this.dateOfBirth;
-        }
-        getEmail(){
-            return this.email;
-        }
-        getPassword(){
-            return this.password;
-        }
-        getRepeatPassword(){
-            return this.repeatPassword;
-        }
-        setFirstName(firstName) {
-            this.firstName=firstName;
-          }
-        setMiddleName(middleName) {
-            this.middleName=middleName;
-        }
-        setLastName(lastName) {
-            this.lastName=lastName;
-        }
-        setDateOfBirth(dateOfBirth) {
-            this.dateOfBirth=dateOfBirth;
-        }
-        setEmail(email){
-            this.email=email;
-        }
-        setPassword(password){
-            this.password=password;
-        }
-        setRepeatPassword(repeatPassword){
-            this.repeatPassword=repeatPassword;
-        }
-    }
-
-    const registerdUser = new User(firstName,middleName,lastName,dateOfBirth,email,password,repeatPassword);
+    const registerdUser = new Register(firstName,lastName,userName,password,repeatPassword);
     console.log(registerdUser);
+    console.log("hello register");
+    fetchData("/users/register", registerdUser, "POST")
+    .then((data) => {
+      setCurrentUser(data);
+      window.location.href = "note.html";
+    })
+    .catch((err) =>{
+      let p = document.querySelector('.error');
+      p.innerHTML = err.message;
+    })
     document.getElementById("registration").reset();
 }
+class Register{
+    constructor(firstName,lastName,userName,password,repeatPassword)
+    {
+        this.firstName=firstName;
+        this.lastName=lastName;
+        this.userName=userName;
+        this.password=password;
+        this.repeatPassword=repeatPassword;
+    }
+   
+    getFirstName() {
+        return this.firstName;
+      }
+    getLastName() {
+        return this.lastName;
+    }
+    getUserName(){
+        return this.userName;
+    }
+    getPassword(){
+        return this.password;
+    }
+    getRepeatPassword(){
+        return this.repeatPassword;
+    }
+    setFirstName(firstName) {
+        this.firstName=firstName;
+      }
+    setLastName(lastName) {
+        this.lastName=lastName;
+    }
+    setUserName(userName){
+        this.userName=userName;
+    }
+    setPassword(password){
+        this.password=password;
+    }
+    setRepeatPassword(repeatPassword){
+        this.repeatPassword=repeatPassword;
+    }
+}
 
-// Login Page Details
-const login=document.getElementById("login");
+let login=document.getElementById("login");
 if(login) login.addEventListener('submit',loginUser);
 
 function loginUser(e){
-
+    
     e.preventDefault();
-
-    let email=document.getElementById('email').value;
+    console.log("hiii");
+    let userName=document.getElementById('uname').value;
     let password=document.getElementById('psw').value;
 
-    class Login{
-        constructor(email,password)
-        {
-            this.email=email;
-            this.password=password;
-        }
-        getEmail(){
-            return this.email;
-        }
-        getPassword(){
-            return this.password;
-        }
-        getRepeatPassword(){
-            return this.repeatPassword;
-        }
-        setEmail(email){
-            this.email=email;
-        }
-        setPassword(password){
-            this.password=password;
-        }
-        setRepeatPassword(repeatPassword){
-            this.repeatPassword=repeatPassword;
-        }
-    }
-
-    const loggedInUserDetails = new Login(email,password);
+    
+    const loggedInUserDetails = new User(userName,password);
     console.log(loggedInUserDetails);
+    fetchData("/users/login", loggedInUserDetails, "POST")
+    .then((data) => {
+      setCurrentUser(data);
+      window.location.href = "note.html";
+    })
+    .catch((err) => {
+      let p = document.querySelector('.error');
+      p.innerHTML = err.message;
+    }) 
     document.getElementById("login").reset();
 }
 
-// Note Page Details
-const note=document.getElementById("note");
-if(note) note.addEventListener('submit',noteSaving);
+class User{
+    constructor(userName,password)
+    {
+        this.userName=userName;
+        this.password=password;
+    }
+    getUserName(){
+        return this.email;
+    }
+    getPassword(){
+        return this.password;
+    }
+    setUserName(userName){
+        this.userName=userName;
+    }
+    setPassword(password){
+        this.password=password;
+    }
+}
 
-function noteSaving(e){
+/*
+class User{
 
-    e.preventDefault();
+    constructor(username,password){
 
-    let date=document.getElementById('date').value;
-    let noteId=document.getElementById('noteid').value;
-    let enteredNotes=document.getElementById('subject').value;
-    class Note{
-        constructor(date,noteId,enteredNotes)
-        {
-            this.date=date;
-            this.noteId=noteId;
-            this.enteredNotes=enteredNotes;
-        }
-        getDate(){
-            return this.date;
-        }
-        getNoteId(){
-            return this.noteId;
-        }
-        getEnterdNotes(){
-            return this.enteredNotes;
-        }
-        setDate(date){
-            this.date=date;
-        }
-        getNoteId(noteId){
-            this.noteId=noteId;
-        }
-        setEnterdNotes(enteredNotes){
-            this.enteredNotes=enteredNotes;
-        }
+        this.userName=username;
+        this.password=password;
     }
 
-    const enteredTextDetails = new Note(date,noteId,enteredNotes);
-    console.log(enteredTextDetails);
-    document.getElementById("note").reset();   
+    getUsername(){
+        return this.userName;
+    }
+
+    setUsername(name_parameter){
+        this.userName=name_parameter;
+    }
+
+    getPassword(){
+        return this.password;
+    }
+
+    setPassword(passcode_parameter){
+        this.password=passcode_parameter;
+    }
+}
+*/
+// Register Page Details
+
+
+
+// Note Page Details
+
+
+const noteform=document.getElementById("note_form");
+if(noteform) noteform.addEventListener('submit',noteSaving);
+
+function noteSaving(e){
+    //console.log("zzzz");
+    e.preventDefault();
+    let note1=document.getElementById('note_id').value;
+   //console.log("hii");
+    const note = new Note(note1);
+    //console.log("hii2");
+    console.log(note);
+    let user=getCurrentUser();
+    note.userID=user.userID;
+    fetchData("/notes/create", note , "POST")
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((err) =>{
+      let p = document.querySelector('.error');
+      p.innerHTML = err.message;
+    })
+    //document.getElementById("note").reset();   
+}
+class Note{
+    constructor(enteredNotes)
+    {
+        this.note=enteredNotes;
+    }
+    getnote(){
+        return this.note;
+    }
+    setnote(enteredNotes){
+        this.note=enteredNotes;
+    }
 }
 
 //User Details using a button click.
@@ -184,19 +209,22 @@ function getUsers(){
 }
 
 //Note Details using a button click.
-const noteDetails=document.getElementById("getNotes");
+const noteDetails=document.getElementById("notes-btn");
 if(noteDetails) noteDetails.addEventListener('click',getNotes);
 
+let user=getCurrentUser();
+if(user && noteform) getNotes();
+
+
  function getNotes(){
-     fetch("http://localhost:3000/notes/")
-     .then((res)=>res.json())
+    let user= getCurrentUser();
+     fetchData("/notes/",user,"post")
      .then((data)=>{
-         console.log(data);
-         let unorderdlist=document.getElementById("noteDetails");
+         let unorderdlist=document.getElementById("allNotes");
 
          data.forEach((note)=>{
              let li=document.createElement('li');
-             let text=document.createTextNode(note.noteContent);
+             let text=document.createTextNode(note.note);
              li.appendChild(text);
              unorderdlist.appendChild(li);
 
@@ -205,24 +233,7 @@ if(noteDetails) noteDetails.addEventListener('click',getNotes);
 
      })
      .catch((err)=>console.log(`Error! ${err}`));
+   //  window.location.href="note.html";
  }
 
- class User{
-    constructor(userName, password, fullName) {
-        this.userName = userName;
-        this.password = password;
-        this.fullName = fullName;
-      }
-    
-      getUsername() {
-        return this.userName;
-      }
-  }
-
-  class Note{
-
-    constructor(text){
-        this.note=text;
-    }
-}
 

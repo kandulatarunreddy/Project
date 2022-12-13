@@ -26,27 +26,21 @@
     <hr>
     <!--Creating Note taking form to a webpage-->
     <div class="note">
-        <form id="note">
-            <h2>Please Enter your details and Subject to save your work.</h2>
-            <br>
-            <label for="date"><b>Date: </b></label>
-            <input type="date" placeholder="Enter Date" name="date" id="date">
-            <br>
-            <br>
-            <label for="noteid">Note Id:</label>
-            <input type="number" placeholder="Enter unique Note Id" name="noteid" id="noteid" min="1" step="1">
+        <p class ="error"></p>
+        <form id="note_form">
+            <h2>Please Enter Subject to save your work.</h2>
             <br>
             <br>
             <label for="subject"><b>Subject: </b></label>
-            <textarea id="subject" name="subject" placeholder="Write something.." id="subject" style="height:100px"></textarea>
+            <textarea id="note_id" name="subject" placeholder="Write something.." id="subject" style="height:100px"></textarea>
             <br>
             <br>
             <label for="submit"></label>
-            <input type="submit" value="Submit">
+            <input type="submit" value="submit">
             <br>
         </form>
-        <button id="getNotes">Get_Notes</button>
-        <ul id="noteDetails"></ul>
+        <button id="notes-btn">Get_Notes</button>
+        <ul id="allNotes"></ul>
     </div>
     <!--Adding Footer to a webpage-->
     <div class="footer" style="margin-top: 180px;">
@@ -55,7 +49,7 @@
             <p>Tarun Reddy Kandula &copy;</p>
         </footer>
     </div>
-    <script src="./main.js"></script>
+    <script type="module" src="./main.js"></script>
 </body>
 </html>
 
