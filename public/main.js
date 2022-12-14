@@ -10,14 +10,10 @@ if(register) register.addEventListener('submit',registerUser)
 function registerUser(e){
 
     e.preventDefault();
-
-    let firstName=document.getElementById('fname').value;
-    let lastName=document.getElementById('lname').value;
     let userName=document.getElementById('uname').value;
     let password=document.getElementById('psw').value;
-    let repeatPassword=document.getElementById('psw-repeat').value;
-
-    const registerdUser = new Register(firstName,lastName,userName,password,repeatPassword);
+    
+    const registerdUser = new Register(userName,password);
     console.log(registerdUser);
     console.log("hello register");
     fetchData("/users/register", registerdUser, "POST")
@@ -34,20 +30,10 @@ function registerUser(e){
 
 // Register class
 class Register{
-    constructor(firstName,lastName,userName,password,repeatPassword)
+    constructor(userName,password)
     {
-        this.firstName=firstName;
-        this.lastName=lastName;
         this.userName=userName;
         this.password=password;
-        this.repeatPassword=repeatPassword;
-    }
-   
-    getFirstName() {
-        return this.firstName;
-      }
-    getLastName() {
-        return this.lastName;
     }
     getUserName(){
         return this.userName;
@@ -55,23 +41,11 @@ class Register{
     getPassword(){
         return this.password;
     }
-    getRepeatPassword(){
-        return this.repeatPassword;
-    }
-    setFirstName(firstName) {
-        this.firstName=firstName;
-      }
-    setLastName(lastName) {
-        this.lastName=lastName;
-    }
     setUserName(userName){
         this.userName=userName;
     }
     setPassword(password){
         this.password=password;
-    }
-    setRepeatPassword(repeatPassword){
-        this.repeatPassword=repeatPassword;
     }
 }
 
