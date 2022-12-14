@@ -1,5 +1,6 @@
 let nav = document.querySelector('nav');
 
+// Checking if there is any current user or not.
 if(getCurrentUser()) {
   nav.innerHTML = `
     
@@ -59,16 +60,18 @@ export function removeCurrentUser() {
   localStorage.removeItem('user');
   window.location.href = "login.html";
 }
+
+//set current note function
 export function setCurrentNote(note) {
   localStorage.setItem('note', JSON.stringify(note));
 }
 
-// getting current user function
+// get current note function
 export function getCurrentNote() {
   return JSON.parse(localStorage.getItem('note'));
 }
 
-// logout function for current user
+// remove current note function
 export function removeCurrentNote() {
   localStorage.removeItem('note');
   window.location.href = "note.html";

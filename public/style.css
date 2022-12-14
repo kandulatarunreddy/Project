@@ -140,12 +140,15 @@ nav{
   width: 400px;
   justify-content: space-between;
 }
+/*adding userDetails color to red*/
 #userDetails{
   color:red;
 }
+/*adding noteDetails color to red*/
 #noteDetails{
   color:red;
 }
+/*adding aallNotes color to red*/
 #allNotes{
   color:red;
   text-align: center;

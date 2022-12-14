@@ -31,8 +31,8 @@ async function register(user) {
 }
 
 // Read User -- login user
-async function login(user) { // {userName: "sda", password: "gsdhjsga"}
-	let cUser = await getUser(user); //[{userName: "cathy123", password: "icecream"}]  
+async function login(user) { 
+	let cUser = await getUser(user); 
 	if (!cUser[0]) throw Error("username not found");
 	if (cUser[0].password !== user.password) throw Error("Password incorrect");
 	return cUser[0];
@@ -63,14 +63,6 @@ async function getUser(user) {
 	return await con.query(sql);
 }
 
-// just to test the functions
-
-// let cathy={
-//     userName:"cat",
-//     password:"123"
-
-// };
-
 module.exports = {
 	getAllUsers,
 	login,
@@ -78,24 +70,3 @@ module.exports = {
 	editUser,
 	deleteUser
 };
-
-/*
-// This would be in the database.
-const users =[
-    {
-        userId:1,
-        userName:"kaitlin",
-        password:"!!!"
-    },
-    {
-        userId:2,
-        userName:"hoffmann",
-        password:"@@@"
-    },
-    {
-        userId:3,
-        userName:"tarun",
-        password:"###"
-    },
-];
-*/

@@ -1,7 +1,9 @@
+// importing methods from fetch.js
 import {
     fetchData, setCurrentUser, setCurrentNote,getCurrentUser, getCurrentNote
 } from "./fetch.js";
 
+// register functionality
 const register=document.getElementById("registration");
 if(register) register.addEventListener('submit',registerUser)
 
@@ -29,6 +31,8 @@ function registerUser(e){
     })
     document.getElementById("registration").reset();
 }
+
+// Register class
 class Register{
     constructor(firstName,lastName,userName,password,repeatPassword)
     {
@@ -71,13 +75,13 @@ class Register{
     }
 }
 
+// login functionality
 let login=document.getElementById("login");
 if(login) login.addEventListener('submit',loginUser);
 
 function loginUser(e){
     
     e.preventDefault();
-    console.log("hiii");
     let userName=document.getElementById('uname').value;
     let password=document.getElementById('psw').value;
 
@@ -96,6 +100,7 @@ function loginUser(e){
     document.getElementById("login").reset();
 }
 
+// User class
 class User{
     constructor(userName,password)
     {
@@ -116,49 +121,14 @@ class User{
     }
 }
 
-/*
-class User{
-
-    constructor(username,password){
-
-        this.userName=username;
-        this.password=password;
-    }
-
-    getUsername(){
-        return this.userName;
-    }
-
-    setUsername(name_parameter){
-        this.userName=name_parameter;
-    }
-
-    getPassword(){
-        return this.password;
-    }
-
-    setPassword(passcode_parameter){
-        this.password=passcode_parameter;
-    }
-}
-*/
-// Register Page Details
-
-
-
-// Note Page Details
-
-
-const noteform=document.getElementById("note_form");
-if(noteform) noteform.addEventListener('submit',noteSaving);
+// Note Page functionality
+const noteForm=document.getElementById("note_form");
+if(noteForm) noteForm.addEventListener('submit',noteSaving);
 
 function noteSaving(e){
-    //console.log("zzzz");
     e.preventDefault();
-    let note1=document.getElementById('note_id').value;
-   //console.log("hii");
-    const note = new Note(note1);
-    //console.log("hii2");
+    let noteValue=document.getElementById('noteId').value;
+    const note = new Note(noteValue);
     console.log(note);
     let user=getCurrentUser();
     note.userID=user.userID;
@@ -170,8 +140,10 @@ function noteSaving(e){
       let p = document.querySelector('.error');
       p.innerHTML = err.message;
     })
+    window.location.reload();
     //document.getElementById("note").reset();   
 }
+//Note class
 class Note{
     constructor(enteredNotes)
     {
@@ -187,9 +159,9 @@ class Note{
 
 //User Details using a button click.
 const usersDetails=document.getElementById("getDetails");
-
 if(usersDetails) usersDetails.addEventListener('click',getUsers);
 
+//function for getusers
 function getUsers(){
     fetch("http://localhost:3000/users/")
     .then((res)=>res.json())
@@ -208,35 +180,29 @@ function getUsers(){
     .catch((err)=>console.log(`error! ${err}`));
 }
 
-//Note Details using a button click.
-//const noteDetails=document.getElementById("notes-btn");
-//if(noteDetails) noteDetails.addEventListener('button',getNotes);
-
+// storing current user details in user
 let user=getCurrentUser();
-if(user && noteform) getNotes();
 
+//Checking if there is current user and noteform
+if(user && noteForm) getNotes();
 
+// functon for getNotes
  function getNotes(){
     let user= getCurrentUser();
-    console.log("hey",user);
      fetchData("/notes/",user,"post")
      .then((data)=>{
          let unorderdlist=document.getElementById("allNotes");
 
          data.forEach((note)=>{
-            console.log("t2",note);
              let li=document.createElement('li');
              let text=document.createTextNode(note.note);
-             //let text=document.createTextNode("t1");
              li.appendChild(text);
              unorderdlist.appendChild(li);
-
          })
-
 
      })
      .catch((err)=>console.log(`Error! ${err}`));
-   //  window.location.href="note.html";
+     //window.location.href="note.html";
  }
 
 
